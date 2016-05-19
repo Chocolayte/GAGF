@@ -1,2 +1,2 @@
 
-Copyright (C) 2016 Chocolayte
+Copyright (C) 2016 Ludovic Baudin
