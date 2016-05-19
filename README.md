@@ -1,2 +1,5 @@
-Projet scolaire UTBM
-Gestion de l’activité d'un groupement de formateur
+
+
+# [Projet scolaire UTBM](gagf.mypix.ovh/)
+
+Gestion de l’activité d'un groupement de formateur.
