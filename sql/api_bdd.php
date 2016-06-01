@@ -2,13 +2,13 @@
 
 class BDD {
 
-  var $bdd;
+  var $bdd = null;
   
   function BDD() 
   {
     $dbhost = 'localhost';
     $dbuser = 'root';
-    $dbpassword = 'Sq$pcA9e!!';
+    $dbpassword = 'root';
     $dbname = 'gagf' ;
   
 	try {
@@ -19,10 +19,12 @@ class BDD {
     }
   }
   
-  function AddUtilisateur()
+  function AddCompetence($competence, $bydefault)
   {
-	$sql = 'INSERT INTO UTILISATEUR VALUES("")';
-	$bdd->query($sql);
+	$sql = "INSERT INTO COMPETENCE VALUES(NULL, '$competence', $bydefault)";
+	echo $sql;
+	$this->bdd->query($sql);
   }
+}
 	
 ?>
