@@ -20,9 +20,14 @@ class BDD {
   }
   
   // Fonction pour ajouter un utilisateur
-  function addUtilisateur($vID,$vMail,$vPass,$vNom,$vPrenom,$vType,$vAdresse,$vCodePostal,$vVille,$vTel,$vActive) {
-  	$sql_req = "INSERT INTO UTILISATEUR VALUES(".$vID.",'".$vMail."','".$vPass."','".$vNom."','".$vPrenom."',".$vType.",'".$vAdresse."','".$vCodePostal."','".$vVille."','".$vTel."',".$vActive.");";
-    $this->sendRequest($sql_req);
+  function addUtilisateur($vMail,$vPass,$vNom,$vPrenom,$vType,$vAdresse,$vCodePostal,$vVille,$vTel,$vActive) {
+	if(!$this->dataExist("UTILISATEUR", "UTILISATEUR_MAIL", "$vMail")){
+		$sql_req = "INSERT INTO UTILISATEUR VALUES(NULL , '$vMail', '$vPass', '$vNom', '$vPrenom', $vType, '$vAdresse', '$vCodePostal', '$vVille', '$vTel', $vActive)";
+		echo $sql_req ;
+		$this->bdd->query($sql_req);
+		return true;
+	}
+	else return false;
   }
   
   // Fonction pour sélectionner tous les utilisateurs
@@ -34,7 +39,7 @@ class BDD {
   // Fonction d'envoi d'une requête
   function sendRequest($req) {
     $reqReturn = $this->bdd->query($req);
-    print_r($reqReturn->fetchAll(PDO::FETCH_ASSOC));
+  //  print_r($reqReturn->fetchAll(PDO::FETCH_ASSOC));
     return $reqReturn->fetchAll(PDO::FETCH_ASSOC);
   }
   
