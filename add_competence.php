@@ -9,7 +9,7 @@
 	session_start();
 	$_SESSION['competence']=$result;
 	 
-	header("Location: saisie_competences.php");
+	header("Location: admin_data.php");
 
 	
 ?>

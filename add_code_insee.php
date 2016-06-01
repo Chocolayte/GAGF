@@ -10,7 +10,7 @@
 	session_start();
 	$_SESSION['insee']=$result;
 	 
-	header("Location: saisie_insee.php");
+	header("Location: admin_data.php");
 
 	
 ?>
