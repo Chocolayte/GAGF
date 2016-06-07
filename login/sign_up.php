@@ -1,6 +1,7 @@
 <?php
 
 	include('../sql/api_bdd.php');
+	include('../utils/cipher.php');
 
 	if (count($_POST) != 5)
 		die("Formulaire invalide");
@@ -14,8 +15,8 @@
 	$mail 	= htmlspecialchars($_POST['mail']);
 	$nom 	= htmlspecialchars($_POST['nom']);
 	$prenom = htmlspecialchars($_POST['prenom']);
-	$pass1 	= htmlspecialchars($_POST['pass1']);
-	$pass2 	= htmlspecialchars($_POST['pass2']);
+	$pass1 	= HashPassword(htmlspecialchars($_POST['pass1']));
+	$pass2 	= HashPassword(htmlspecialchars($_POST['pass2']));
 	$type=1;
 	$adresse="hello";
 	$codePostal="90000";
@@ -23,10 +24,10 @@
 	$tel="0698585858";
 	
 	if (htmlspecialchars($_POST['pass1']) != htmlspecialchars($_POST['pass2']))
-			die("Les mots de passe ne correspondent pas");
+		die("Les mots de passe ne correspondent pas");
 
 	$bdd = new BDD();
-	$userExists = $bdd->addUtilisateur($mail,$pass1,$nom,$prenom,$type,$adresse,$codePostal,$ville,$tel,0);
+	$userExists = $bdd->AddUtilisateur($mail, $pass1, $nom, $prenom, $type, $adresse, $codePostal, $ville, $tel, 0);
 	print_r($userExists);
 	
 ?>

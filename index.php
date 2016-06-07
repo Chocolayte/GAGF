@@ -4,7 +4,7 @@
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Incription</span>
+          <span class="mdl-layout-title">Connexion</span>
           <div class="mdl-layout-spacer"></div>
           
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
@@ -26,8 +26,8 @@
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
          <!-- <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Accueil</a>-->
-          <a class="mdl-navigation__link" href="#"id="link_inscription" onClick="a_connection_onClick()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>S'inscrire</a>
-          <a class="mdl-navigation__link" href="#" id="link_connection" onClick="a_inscription_onClick()""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">input</i>Se connecter</a>
+          <a class="mdl-navigation__link" href="#" id="link_connexion" onClick="a_inscription_onClick()""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">input</i>Se connecter</a>
+          <a class="mdl-navigation__link" href="#"id="link_inscription" onClick="a_connexion_onClick()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>S'inscrire</a>
           <!--<a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Mes clients</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">euro_symbol</i>Devis & factures</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">share</i>Partager un fichier</a>
@@ -37,11 +37,6 @@
         </nav>
      </div>
 	<main class="mdl-layout__content mdl-color--grey-100">
-      
-      
-
-
-
 
 <!-- <html lang="fr">
 <head>
@@ -53,11 +48,11 @@
 
  <div class="mdl-grid demo-content">
           <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" >
-	<div id="connection" style="display:none">
-		<h1> Formulaire de connection </h1>
+	<div id="connexion" >
+		<h1> Formulaire de connexion </h1>
 		<form method="post" action="login/login.php">
 			<fieldset>
-				<legend> Connection </legend>
+				<legend> connexion </legend>
 				<p> 
 					<label for="mail">E-mail </label> <br/><br/>
 					<input type="email" name="mail" id="mail" placeholder="exemple@gmail.com" required="required" /> <br/> <br/>
@@ -69,49 +64,51 @@
 				</p>
 			</fieldset>
 		</form>
-		<a href="#" id="link_inscription" onClick="a_connection_onClick()">S'inscrire</a>
+		<a href="#" id="link_inscription" onClick="a_connexion_onClick()">S'inscrire</a>
 	</div>
 	
-	<div id="inscription" >
+	<div id="inscription" style="display:none">
 		<h1> Formulaire d'inscription </h1>
 		<form method="post" action="login/sign_up.php">
 			<fieldset>
 				<legend> Inscription </legend>
 				<p>
 					<label for="mail"> Veuillez indiquer votre email </label> <br/><br/>
-					<input type="email" name="mail" id="mail" placeholder="exemple@gmail.com" required="required" value="baudin.pro@gmail.com" /> <br/> <br/>
+					<input type="email" name="mail" id="mail" placeholder="exemple@gmail.com" required="required" /> <br/> <br/>
 						
 					<label for="nom"> Veuillez indiquer votre nom </label> <br/><br/>
-					<input type="text" name="nom" id="nom" required="required" text="" value="Baudin"/> <br/> <br/>
+					<input type="text" name="nom" id="nom" required="required" text="" /> <br/> <br/>
 						
 					<label for="prenom"> Veuillez indiquer votre prenom </label> <br/><br/>
-					<input type="text" name="prenom" id="prenom" required="required" value="Prenom" /> <br/> <br/>
+					<input type="text" name="prenom" id="prenom" required="required" /> <br/> <br/>
 						
 					<label for="pass"> Veuillez indiquer votre password </label> <br/><br/>
-					<input type="password" name="pass1" id="pass" required="required" value="password" /> <br/> <br/>
+					<input type="password" name="pass1" id="pass" required="required" /> <br/> <br/>
 						
 					<label for="pass"> Veuillez confirmer votre password </label> <br/><br/>
-					<input type="password" name="pass2" id="pass" required="required" value="password" /> <br/> <br/>
+					<input type="password" name="pass2" id="pass" required="required" /> <br/> <br/>
 						
-					<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" type = "submit"  value="Envoyer"/>
+					<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" type = "submit" />
 				</p>
 			</fieldset>
 		</form>
-		<a href="#" id="link_connection" onClick="a_inscription_onClick()">Se connecter</a>
+		<a href="#" id="link_connexion" onClick="a_inscription_onClick()">Se connecter</a>
 	</div>
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 	<script>
-	function a_inscription_onClick() {
+	function a_inscription_onClick() 
+	{
 		$('#inscription').hide();
-		$('#connection').show();
-		$('.mdl-layout-title').html("Connection");
-	  }	
-	function a_connection_onClick() {
-		$('#connection').hide();
+		$('#connexion').show();
+		$('.mdl-layout-title').html("connexion");
+	}	
+	function a_connexion_onClick() 
+	{
+		$('#connexion').hide();
 		$('#inscription').show();
 		$('.mdl-layout-title').html("Inscription");
-	  }	
+	}	
 	</script>
 	</div>
 	</div>

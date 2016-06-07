@@ -1,18 +1,35 @@
 <?php
 
-    if (isset($_POST['pass']) AND $_POST['pass'] ==  "alextacky") // Si le mot de passe est bon, par exemple alextacky
-    {
-    // On affiche lui affiche l'interface et les services auxquels il a accès
-    ?>
-        <p>
-           Bienvenue sur votre espace qui vosu permet d'acceder à vos fonctionnalités 
-        </p>
-		
-        <?php
-    }
-    else // Sinon, on affiche un message d'erreur
-    {
-        echo '<p> Mot de passe incorrect</p>'; // et on le renvoie lui propose mot de passe oublié? ou alors de rentrer sur la page de connexion !
-    }
+	include('../sql/api_bdd.php');
+	include('../utils/cipher.php');
+
+	if (count($_POST) != 2)
+		die("Formulaire invalide");
+
+	foreach (array("mail", "password") as $field)
+	{
+		if (!isset($_POST[$field]))
+			die("Le champs $field n'est pas renseigné");
+	}
+	
+	$mail 	  = htmlspecialchars($_POST['mail']);
+	$password = HashPassword(htmlspecialchars($_POST['password']));
+	
+	$bdd = new BDD();
+	
+	$isUserExists = $bdd->IsUserExists($mail, $password);
+	
+	if (!$isUserExists)
+		die ("Erreur de connexion");
+
+	// Cookie de connection, durée d'expiration d'un an
+	$cookie = CryptCookieMail($mail);
+	setcookie("log", $cookie, time() + 31556926 , '/');
+	$status = $bdd->GetUtilisateurType($mail);
+	setcookie("status", $status, time() + 31556926 , '/');
+	
+	// Redirection
+	header('Location: ../');	
+	
     ?>
     
