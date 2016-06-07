@@ -1,17 +1,17 @@
 DROP TABLE IF EXISTS 
-	utilisateurType,
-	utilisateur,
-	competence,
-	utilisateur_competence,
-	classification,
-	formationType,
-	formation,
-	formation_date,
-	client,
-	participant,
-	formation_client_participant,
+	devis,
 	facture,
-	devis;
+	formation_client_participant,
+	participant,
+	client,
+	formation_date,
+	formation,
+	formationType,
+	classification,
+	utilisateur_competence,
+	competence,
+	utilisateur,
+	utilisateurType;
 
 CREATE TABLE IF NOT EXISTS utilisateurType (
 	UTILISATEURTYPE_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
