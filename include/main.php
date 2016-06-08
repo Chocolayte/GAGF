@@ -1,10 +1,13 @@
 ﻿<?php
-  include('/utils/cipher.php');
-  include('/sql/api_bdd.php');
+  include('utils/cipher.php');
+  include('sql/api_bdd.php');
   $bdd=new BDD();
+  
   $cookie = $_COOKIE["log"];
   $mail = DecryptCookieMail($cookie);
-  //$name = $bdd->GetNameUtilisateur($mail);
+  
+  $bdd = new BDD();
+  $name = $bdd->GetNameUtilisateur($mail);
   $type = $bdd->GetUtilisateurType($mail);
  
 ?>
@@ -37,7 +40,11 @@
         <header class="demo-drawer-header">
           <img src="images/user.jpg" class="demo-avatar">		  
 		  <div class="demo-avatar-dropdown">
-			<span>Pauline KIM</span>
+			<span>
+				<?php 
+					echo $name;
+				?>
+			</span>
           </div> 
         </header>
 <?php
