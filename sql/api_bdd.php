@@ -8,7 +8,7 @@ class BDD {
   {
     $dbhost = 'localhost';
     $dbuser = 'root';
-    $dbpassword = 'root';
+    $dbpassword = $_SERVER['SERVER_NAME'] == 'gagf.mypix.ovh' ? 'Sq$pcA9e!!' : 'root';
     $dbname = 'gagf' ;
   
 	try {
