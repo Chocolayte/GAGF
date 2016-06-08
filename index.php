@@ -31,9 +31,9 @@
 			<span></span>
           </div> -->
         </header>
-        <nav class="demo-navigation mdl-navigation">     
+        <nav class="demo-navigation mdl-navigation">   
 			<a class="mdl-navigation__link" href="#" id="link_connexion" onClick="a_inscription_onClick()"><i class="material-icons" role="presentation">input</i>SE CONNECTER</a>
-			<a class="mdl-navigation__link" href="#"id="link_inscription" onClick="a_connexion_onClick()"><i class="material-icons" role="presentation">person_add</i>S'INSCRIRE</a>
+			<a class="mdl-navigation__link" href="#" id="link_inscription" onClick="a_connexion_onClick()"><i class="material-icons" role="presentation">person_add</i>S'INSCRIRE</a>
 			<div class="mdl-layout-spacer"></div>
 			<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
@@ -43,7 +43,7 @@
 <div class="mdl-grid demo-content">
     <div class="demo-charts mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" >
 		<div id="connexion" >
-			<h3> Formulaire de connexion </h3>
+			<h3> Connexion </h3>
 			<form method="post" action="login/login.php">
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					<label class="mdl-textfield__label" for="mail">E-mail</label>
@@ -65,7 +65,7 @@
 		</div>
 		
 		<div id="inscription" style="display:none">
-			<h3> Formulaire d'inscription </h3>
+			<h3> Inscription </h3>
 			<form method="post" action="login/sign_up.php">
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					<label class="mdl-textfield__label" for="mail">Veuillez indiquer votre email</label>
