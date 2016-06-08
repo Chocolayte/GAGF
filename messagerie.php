@@ -8,44 +8,49 @@ $css = "style/messagerie.css";
 include('include/header.php'); 
 include ('include/main.php');
 
-function WriteLine($name, $title, $date, $read)
+function WriteLine($name, $id, $title, $date, $read)
 {
 	echo "  <tr>\n";
 	echo "   <td>$name</td>\n";
 	echo $read == true 
-			? "   <td><a href=\"#\" class=\"read\">$title</a></td>\n"
-			: "   <td><a href=\"#\" >$title</a></td>\n";;
+			? "   <td><a href=\"conversation.php?id=$id\" class=\"read\">$title</a></td>\n"
+			: "   <td><a href=\"conversation.php?id=$id\" >$title</a></td>\n";;
 	echo "   <td>$date</td>\n";
 	echo "  </tr>\n";
 }
 $mail_login = DecryptCookieMail($_COOKIE['log']);
 ?>
 
-<table class="responstable" >
   
-  <tbody><tr>
-    <th width="200">Destinataire</th>
-    <th>Sujet</th>
-    <th width="200">Date</th>
-  </tr>
   
-  <?php
-	$personnalID = $bdd->GetUtilisateurData($mail_login)['UTILISATEUR_ID'];
-	$conversations = $bdd->GetConversations($mail_login);
+<?php
+$personnalID = $bdd->GetUtilisateurData($mail_login)['UTILISATEUR_ID'];
+$conversations = $bdd->GetConversations($mail_login);
+  
+if (sizeof($conversations) > 0) 
+{
+	echo '<table class="responstable" >';
+	echo '<tbody><tr>';
+	echo '  <th width="200">Destinataire</th>';
+	echo '  <th>Sujet</th>';
+	echo '  <th width="200">Date</th>';
+	echo '</tr>';
 
 	foreach ($conversations as &$value)
 	{
 	  $account = $personnalID == $value['CONVERSATION_UTILISATEUR1'] ? $value['CONVERSATION_UTILISATEUR2'] : $value['CONVERSATION_UTILISATEUR1'];
 	  $userData = $bdd->GetUtilisateurDataById($account);
 	  $userName = $userData['UTILISATEUR_PRENOM'].' '.$userData['UTILISATEUR_NOM'];
-	  WriteLine($userName, $value['CONVERSATION_TITRE'], $value['CONVERSATION_DATE'], $value['CONVERSATION_UTILISATEUR1_LU']); 
+	  WriteLine($userName, $value['CONVERSATION_ID'], $value['CONVERSATION_TITRE'], $value['CONVERSATION_DATE'], $value['CONVERSATION_UTILISATEUR1_LU']); 
 	}
-  ?>
+	
+	echo '</tbody></table>';
+}
+?>
   
-</tbody></table>
 
 
-<div style="margin-top:50px">
+		<div style="margin-top:50px">
 			<div class="container">
 				<div class="panel panel-default" style="margin:0 auto">
 					<div class="panel-heading">

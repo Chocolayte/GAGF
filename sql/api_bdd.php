@@ -114,11 +114,12 @@ class BDD {
 	return $this->bdd->lastInsertId();
   }
   
-  // Ajouter une conversation privée
+  // Retourne une conversation privée
   public function GetConversations($mail_emetteur)
   {
 	$sql = "SELECT 
-				  C.CONVERSATION_TITRE
+				  C.CONVERSATION_ID
+				, C.CONVERSATION_TITRE
 				, C.CONVERSATION_DATE
 				, C.CONVERSATION_UTILISATEUR1
 				, C.CONVERSATION_UTILISATEUR1_LU
@@ -144,6 +145,14 @@ class BDD {
 			, CURRENT_TIMESTAMP())";
 	$this->SendRequest($sql);
 	return true;
+  }
+  
+  // Retourne les messages d'une conversation
+  public function GetMessages($id)
+  {
+	$sql = "SELECT * FROM MESSAGE WHERE MESSAGE_CONVERSATION = '$id'";
+	$result = $this->SendRequest($sql);
+	return $result;
   }
   
   // Ajouter un code INSEE
