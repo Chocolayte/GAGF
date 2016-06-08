@@ -25,7 +25,7 @@
 	// Cookie de connection, durée d'expiration d'un an
 	$cookie = CryptCookieMail($mail);
 	setcookie("log", $cookie, time() + 31556926 , '/');
-	$status = $bdd->GetUtilisateurType($mail);
+	$status = $bdd->GetUtilisateurData($mail)['UTILISATEUR_UTILISATEURTYPE'];
 	setcookie("status", $status, time() + 31556926 , '/');
 	
 	// Redirection

@@ -7,8 +7,9 @@
   $mail = DecryptCookieMail($cookie);
   
   $bdd = new BDD();
-  $name = $bdd->GetNameUtilisateur($mail);
-  $type = $bdd->GetUtilisateurType($mail);
+  $userData = $bdd->GetUtilisateurData($mail);
+  $name = $userData['UTILISATEUR_PRENOM'].' '.$userData['UTILISATEUR_NOM'];
+  $type = $userData['UTILISATEUR_UTILISATEURTYPE'];
  
 ?>
 <body>

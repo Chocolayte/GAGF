@@ -76,18 +76,6 @@ class BDD {
 	return null;
   }
   
-  // Fonction pour obtenir le type d'un utilisateur
-  public function GetUtilisateurType($mail)
-  {
-	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail))
-	{
-		$sql = "SELECT UTILISATEUR_UTILISATEURTYPE FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
-		$this->SendRequest($sql);
-		return true;
-	}
-	return -1;
-  }
-  
   // Ajouter une competence
   public function AddCompetence($competence, $bydefault)
   {
