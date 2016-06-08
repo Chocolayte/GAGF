@@ -1,3 +1,8 @@
+<?php
+  if (!isset($_COOKIE["log"]))
+	header("Location: index.php");
+?>
+
 <?php //admin_data.php 
 	session_start();
 ?>
