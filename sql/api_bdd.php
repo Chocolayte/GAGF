@@ -71,10 +71,10 @@ class BDD {
 	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail))
 	{
 		$sql = "SELECT UTILISATEUR_UTILISATEURTYPE FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
-		$this->SendRequest($sql);
-		return true;
+		$result= $this->SendRequest($sql);
+		return $result [0]["UTILISATEUR_UTILISATEURTYPE"];
 	}
-	return -1;
+	//return -1;
   }
   
   // Ajouter une competence
