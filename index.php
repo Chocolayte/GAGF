@@ -55,7 +55,7 @@
 					<label class="mdl-textfield__label" for="nom">Mot de passe</label>
 					<input class="mdl-textfield__input" type="text" name="password" id="nom" required="required" />
 				</div>
-				<br/><br/><br/>
+				<br/><br/>
 					
 				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" style="float:right;" type="submit"  value="Envoyer"/>
 			</form>
