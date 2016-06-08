@@ -105,6 +105,14 @@ class BDD {
 	return false;
   }
   
+  // obtention des classification
+	public function GetClass()
+	{
+	  $sql = "SELECT * FROM classification";
+	return $this->SendRequest($sql);
+	
+	}
+	
   // Ajouter un code INSEE
   public function AddInsee($code, $libelle) 
   {
@@ -117,5 +125,6 @@ class BDD {
 	return false;
   }
 }
-	
+
+
 ?>

@@ -50,7 +50,7 @@
 		 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
           <a class="mdl-navigation__link" href="home.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Accueil</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_circle</i>Mon espace</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Messages privés</a>
+          <a class="mdl-navigation__link" href="messagerie.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Messages privés</a>
 <?php
 switch($type)
 {

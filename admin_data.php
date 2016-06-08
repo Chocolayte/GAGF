@@ -5,17 +5,17 @@
 
 <?php //admin_data.php 
 	session_start();
-	$css = "style/messagerie.css";
+	//$css = "style/messagerie.css";
+	
 	function WriteLine($code, $libelle)
 		{
-			echo "  <tr>\n";
-			echo "   <tdclass=\"mdl-data-table__cell--non-numeric\">$code</td>\n";
-			echo "   <td>$libelle</td>\n";
-			echo "   <td>checkbox</td>\n";
+			//echo "  <tr>\n";
+			echo " 	<tr data-mdl-data-table-selectable-name=\"suppcode[]\" data-mdl-data-table-selectable-value=\"$code\">\n";
+			echo "   <td class=\"mdl-data-table__cell--non-numeric\">$libelle</td>\n";
+			echo "   <td>$code</td>\n";
 			echo "  </tr>\n";
 		}
 ?>
-
 <?php include('include/header.php'); ?>
 <?php include ('include/main.php'); ?>
 
@@ -61,15 +61,10 @@
 				<label for="libelle">Libellé INSEE :</label>
 				<input type="text" name="libelle" id="libelle" placeholder="Ex : Linguistique" size="40" maxlength="100" required="required"/>
 				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" type="submit" value="Ajouter" />
+				
 			</p>
-		</form>
-		
-
-		
 			<p align="left">
-			<br />
-			<br />
-			<br />
+			
 			<?php
 				//echo $_SESSION['competence'];
 				if (isset($_SESSION['insee'])){
@@ -83,7 +78,40 @@
 				}
 				unset($_SESSION['insee']);
 			?>
+			<br />
+			<br />
 			</p>
+		
+		
+			<p>
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" >
+  
+			  <tbody>
+			   <thead>
+				<tr>
+			 		<th class="mdl-data-table__cell--non-numeric">Libellé</th>
+					<th width="400">Code</th>
+				</tr>
+			 </thead>
+			  <?php 
+			  $result=$bdd->GetClass();
+			  $cmp = count($result);
+			 
+				for($i=0;$i<$cmp;$i++)	
+					writeline($result[$i]["CLASSIFICATION_CODE_INSEE"],$result[$i]["CLASSIFICATION_LIBELLE"]);
+				
+			  ?>
+			  </tbody></table>
+				<br />
+				<br />	
+			
+			</p>
+			</form>
+		
+		
+
+			
+
           </div>
      </div>
 
