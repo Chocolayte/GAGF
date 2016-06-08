@@ -5,6 +5,15 @@
 
 <?php //admin_data.php 
 	session_start();
+	$css = "style/messagerie.css";
+	function WriteLine($code, $libelle)
+		{
+			echo "  <tr>\n";
+			echo "   <tdclass=\"mdl-data-table__cell--non-numeric\">$code</td>\n";
+			echo "   <td>$libelle</td>\n";
+			echo "   <td>checkbox</td>\n";
+			echo "  </tr>\n";
+		}
 ?>
 
 <?php include('include/header.php'); ?>
@@ -54,6 +63,8 @@
 				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" type="submit" value="Ajouter" />
 			</p>
 		</form>
+		
+
 		
 			<p align="left">
 			<br />
