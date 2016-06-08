@@ -76,6 +76,17 @@ class BDD {
 	return null;
   }
   
+  // Fonction pour obtenir le type d'un utilisateur
+  public function GetUtilisateurDataById($id)
+  {
+	if($this->IsDataExists("UTILISATEUR", "UTILISATEUR_ID", $id))
+	{
+		$sql = "SELECT * FROM UTILISATEUR WHERE UTILISATEUR_ID='$id'";
+		return $this->SendRequest($sql)[0];
+	}
+	return null;
+  }
+  
   // Ajouter une competence
   public function AddCompetence($competence, $bydefault)
   {

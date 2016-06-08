@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./style/material.css">
     <link rel="stylesheet" href="./style/styles.css">
+	<?php if (isset($css)) echo "<link rel=\"stylesheet\" href=\"$css\">"; ?>
     <style>
     #view-source {
       position: fixed;

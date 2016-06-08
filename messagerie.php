@@ -24,24 +24,28 @@ $mail_login = DecryptCookieMail($_COOKIE['log']);
 <table class="responstable" >
   
   <tbody><tr>
-    <th width="400">Destinataire</th>
+    <th width="200">Destinataire</th>
     <th>Sujet</th>
-    <th width="300">Date</th>
+    <th width="200">Date</th>
   </tr>
   
-  <?php 
-  $personnalID = $bdd->GetUtilisateurData($mail_login)['UTILISATEUR_ID'];
-  $conversations = $bdd->GetConversations($mail_login);
-  print_r($conversations);
-  
-  WriteLine("Pauline Kim", "Demande de fijrebg", "01/01/1978", true); 
-  WriteLine("Steffie Jayzy", "Question à propos du rehgbiuhb", "01/01/1978", false); 
-  WriteLine("Emma Watson", "Un autographe svp", "01/01/1978", false); ?>
+  <?php
+	$personnalID = $bdd->GetUtilisateurData($mail_login)['UTILISATEUR_ID'];
+	$conversations = $bdd->GetConversations($mail_login);
+
+	foreach ($conversations as &$value)
+	{
+	  $account = $personnalID == $value['CONVERSATION_UTILISATEUR1'] ? $value['CONVERSATION_UTILISATEUR2'] : $value['CONVERSATION_UTILISATEUR1'];
+	  $userData = $bdd->GetUtilisateurDataById($account);
+	  $userName = $userData['UTILISATEUR_PRENOM'].' '.$userData['UTILISATEUR_NOM'];
+	  WriteLine($userName, $value['CONVERSATION_TITRE'], $value['CONVERSATION_DATE'], $value['CONVERSATION_UTILISATEUR1_LU']); 
+	}
+  ?>
   
 </tbody></table>
 
 
-<div style="margin-top:100px">
+<div style="margin-top:50px">
 			<div class="container">
 				<div class="panel panel-default" style="margin:0 auto">
 					<div class="panel-heading">
@@ -78,5 +82,8 @@ $mail_login = DecryptCookieMail($_COOKIE['log']);
 				</div>
 			</div>
 		</div>
+		
+		<br>
+		<br>
 
 <?php include('include/footer.php'); ?>
