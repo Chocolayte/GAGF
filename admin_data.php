@@ -16,7 +16,7 @@
           <form method="post" action="add_competence.php">
 			<p>
 				<label for="Competence">Nom de la compétence :</label>
-				<input type="text" name="competence" id="competence" placeholder="Ex : Utilisation d'outils bureautiques" size="40" maxlength="50" />
+				<input type="text" name="competence" id="competence" placeholder="Ex : Utilisation d'outils bureautiques" size="40" maxlength="50" required="required"/>
 				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" type="submit" value="Ajouter" />
 			</p>
 			</form>
@@ -47,10 +47,10 @@
           <form method="post" action="add_code_insee.php">
 			<p>
 				<label for="Code">Code INSEE :</label>
-				<input type="text" name="code" id="code" placeholder="Ex : 125" size="40" maxlength="3" />
+				<input type="text" name="code" id="code" placeholder="Ex : 125" size="40" maxlength="3" required="required"/>
 				<br />
 				<label for="libelle">Libellé INSEE :</label>
-				<input type="text" name="libelle" id="libelle" placeholder="Ex : Linguistique" size="40" maxlength="100" />
+				<input type="text" name="libelle" id="libelle" placeholder="Ex : Linguistique" size="40" maxlength="100" required="required"/>
 				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" type="submit" value="Ajouter" />
 			</p>
 		</form>
