@@ -60,17 +60,17 @@ class BDD {
   // Fonction pour obtenir l'accès d'un utilisateur
   public function IsUserExists($mail, $password)
   {
-    $sql = "SELECT COUNT(*) AS exist FROM utilisateur WHERE UTILISATEUR_MAIL='$mail' AND UTILISATEUR_MOT_DE_PASSE='$password'";
+    $sql = "SELECT COUNT(*) AS EXIST FROM UTILISATEUR WHERE UTILISATEUR_MAIL='$mail' AND UTILISATEUR_MOT_DE_PASSE='$password'";
     $result = $this->SendRequest($sql);
-	return $result[0]["exist"] > 0;
+	return $result[0]["EXIST"] > 0;
   }
   
   // Fonction pour obtenir le type d'un utilisateur
   public function GetUtilisateurData($mail)
   {
-	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail))
+	if($this->IsDataExists("UTILISATEUR", "UTILISATEUR_MAIL", $mail))
 	{
-		$sql = "SELECT * FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
+		$sql = "SELECT * FROM UTILISATEUR WHERE UTILISATEUR_MAIL='$mail'";
 		return $this->SendRequest($sql)[0];
 	}
 	return null;
@@ -138,7 +138,7 @@ class BDD {
   // Ajouter un code INSEE
   public function AddInsee($code, $libelle) 
   {
-	if(!$this->IsDataExists("classification", "CLASSIFICATION_CODE_INSEE", $code))
+	if(!$this->IsDataExists("CLASSIFICATION", "CLASSIFICATION_CODE_INSEE", $code))
 	{
 		$sql = "INSERT INTO CLASSIFICATION VALUES(NULL, '$code', '$libelle')";
 		$this->SendRequest($sql);
