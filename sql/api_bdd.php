@@ -66,31 +66,26 @@ class BDD {
   }
   
   // Fonction pour obtenir le type d'un utilisateur
+  public function GetUtilisateurData($mail)
+  {
+	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail))
+	{
+		$sql = "SELECT * FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
+		return $this->SendRequest($sql)[0];
+	}
+	return null;
+  }
+  
+  // Fonction pour obtenir le type d'un utilisateur
   public function GetUtilisateurType($mail)
   {
 	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail))
 	{
 		$sql = "SELECT UTILISATEUR_UTILISATEURTYPE FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
-		$result= $this->SendRequest($sql);
-		return $result [0]["UTILISATEUR_UTILISATEURTYPE"];
+		$this->SendRequest($sql);
+		return true;
 	}
-	//return -1;
-  }
-  
-  // Fonction pour obtenir le nom et prénom de l'utilisateur
-  public function GetNameUtilisateur($mail) 
-  {
-	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail)) 
-	{
-		$sql = "SELECT UTILISATEUR_NOM, UTILISATEUR_PRENOM FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
-		$result = $this->SendRequest($sql);		
-		$array = array(
-			"nom" => strtoupper($result[0]["UTILISATEUR_NOM"]), 
-			"prenom" => $result[0]["UTILISATEUR_PRENOM"]
-		);
-		$string = implode(" ", $array);		
-		return $string;
-	}
+	return -1;
   }
   
   // Ajouter une competence
@@ -103,6 +98,53 @@ class BDD {
 		return true;
 	}
 	return false;
+  }
+  
+  // Ajouter une conversation privée
+  public function AddConversation($subject, $mail_emetteur, $mail_destinataire)
+  {
+	$sql = "INSERT INTO CONVERSATION VALUES(
+			  NULL
+			, '$subject'
+			, (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')
+			, (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_destinataire')
+			, CURRENT_TIMESTAMP()
+			, 1
+			, 0)";
+	$this->SendRequest($sql);
+	return $this->bdd->lastInsertId();
+  }
+  
+  // Ajouter une conversation privée
+  public function GetConversations($mail_emetteur)
+  {
+	$sql = "SELECT 
+				  C.CONVERSATION_TITRE
+				, C.CONVERSATION_DATE
+				, C.CONVERSATION_UTILISATEUR1
+				, C.CONVERSATION_UTILISATEUR1_LU
+				, C.CONVERSATION_UTILISATEUR2
+				, C.CONVERSATION_UTILISATEUR2_LU
+			FROM 
+				CONVERSATION AS C
+			WHERE 
+				   CONVERSATION_UTILISATEUR1 = (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')
+				OR CONVERSATION_UTILISATEUR2 = (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')";
+	$result = $this->SendRequest($sql);
+	return $result;
+  }
+  
+  // Ajouter un message dans une conversation privée
+  public function AddMessage($conversationID, $mail_emetteur, $message)
+  {
+	$sql = "INSERT INTO MESSAGE VALUES(
+			  NULL
+			, '$conversationID'
+			, (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')
+			, '$message'
+			, CURRENT_TIMESTAMP())";
+	$this->SendRequest($sql);
+	return true;
   }
   
   // Ajouter un code INSEE
