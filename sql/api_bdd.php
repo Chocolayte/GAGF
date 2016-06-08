@@ -77,6 +77,22 @@ class BDD {
 	return -1;
   }
   
+  // Fonction pour obtenir le nom et prénom de l'utilisateur
+  public function GetNameUtilisateur($mail) 
+  {
+	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail)) 
+	{
+		$sql = "SELECT UTILISATEUR_NOM, UTILISATEUR_PRENOM FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
+		$result = $this->SendRequest($sql);		
+		$array = array(
+			"nom" => strtoupper($result[0]["UTILISATEUR_NOM"]), 
+			"prenom" => $result[0]["UTILISATEUR_PRENOM"]
+		);
+		$string = implode(" ", $array);		
+		return $string;
+	}
+  }
+  
   // Ajouter une competence
   public function AddCompetence($competence, $bydefault)
   {
