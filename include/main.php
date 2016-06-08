@@ -1,4 +1,13 @@
-﻿<body>
+﻿<?php
+  include('../utils/cipher.php');
+  include('../sql/api_bdd.php');
+  
+  $cookie = $_COOKIE["log"];
+  $mail = DecryptCookieMail($cookie);
+  //$name = $bdd->GetNameUtilisateur($mail);
+  $type = $bdd->GetUtilisateurType($mail);
+?>
+<body>
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -30,6 +39,7 @@
 			<span>Pauline KIM</span>
           </div> 
         </header>
+
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Accueil</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_circle</i>Mon espace</a>

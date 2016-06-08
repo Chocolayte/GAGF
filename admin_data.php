@@ -1,7 +1,7 @@
-
 <?php //admin_data.php 
-session_start();
+	session_start();
 ?>
+
 <?php include('include/header.php'); ?>
 <?php include ('include/main.php'); ?>
 
