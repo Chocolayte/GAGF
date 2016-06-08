@@ -46,9 +46,8 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <?php if (isset($css)) echo "<link rel=\"stylesheet\" href=\"$css\">"; ?>
+    <link rel="stylesheet" href="./style/material.css">
+    <link rel="stylesheet" href="./style/styles.css">
     <style>
     #view-source {
       position: fixed;
