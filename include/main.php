@@ -1,7 +1,14 @@
 ﻿<?php
+<<<<<<< HEAD
   include('utils/cipher.php');
   include('sql/api_bdd.php');
   $bdd=new BDD();
+=======
+  include('../utils/cipher.php');
+  include('../sql/api_bdd.php');
+  // include('D:\UwAmp\www\GAGF/utils/cipher.php');
+  // include('D:\UwAmp\www\GAGF/sql/api_bdd.php');
+>>>>>>> master
   
   $cookie = $_COOKIE["log"];
   $mail = DecryptCookieMail($cookie);
