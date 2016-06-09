@@ -4,12 +4,13 @@
 	
 	$bdd = new BDD();
 	$competence= $_POST['competence'];
+	
 	$result=$bdd->AddCompetence($competence, true);
 	
-	session_start();
-	$_SESSION['competence']=$result;
-	 
-	header("Location: admin_data.php");
+	if ($result)
+	  echo "Compétence ajoutée avec succès";
+	else
+	  echo "Compétence déjà existente";
 
 	
 ?>
