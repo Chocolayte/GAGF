@@ -58,7 +58,7 @@ switch($type)
 	case 1:
 ?>
        
-		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
+		  <a class="mdl-navigation__link" href="statistiques.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Gestion des comptes</a>
 		  <a class="mdl-navigation__link" href="admin_data.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">school</i>Gestion des Formations</a>
         <!--  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">euro_symbol</i>Devis & factures</a>-->
