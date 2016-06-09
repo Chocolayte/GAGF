@@ -209,7 +209,7 @@
 						<button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--icon" type="submit" onClick="onClickAdd()">
 							<i class="material-icons">add</i>
 						</button>
-					 
+					</th>
 				</tr>
 			</thead>
 			<tbody id="classificationsList">
@@ -231,7 +231,7 @@
 			<br />
 			<br />
 			</p>
-          </div>
      </div>
+    
 
 <?php include('include/footer.php'); ?>
