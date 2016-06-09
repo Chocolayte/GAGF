@@ -3,60 +3,59 @@
 if (!isset($_COOKIE["log"]))
 	header("Location: index.php");
 
-$css = "style/messagerie.css";
+$css = "style/statistiques.css";
 $css2 = "style/monthly.css";
 $header = "Statistiques";
 include('include/header.php'); 
 include('include/main.php'); 
 ?>
 
-<table style="width:100%">
-  <tr>
-	<td style="width: 50%; background:;" >
-		<div id="dual_y_div" style="max-width: 900px; max-height: 500px; margin-left: 50px; margin-top: 50px;"></div>
-	</td>
-	<td style="width: 50%; background:">
-		<table class="responstable" style="max-width:500px;"><tbody>
-	  <tr>  
-		<th >Statistique</th>  
-		<th width="70">Valeur</th>
-	  </tr>
-	  <tr>
-	   <td>Nombre de formateurs inscrits</td>
-	   <td>33</td>
-	  </tr>
-	  <tr>
-	   <td>Nombre de formateurs validés</td>
-	   <td>28</td>
-	  </tr>
-	  <tr>
-	   <td>Prix moyen d'une journée de formation</td>
-	   <td>210 €</td>
-	  </tr>
-	  <tr>
-	   <td>Ratio d'actions de formations acceptées</td>
-	   <td>91%</td>
-	  </tr>
-	  <tr>
-	   <td>Nombre de participants à des actions groupées</td>
-	   <td>8</td>
-	  </tr>
-	  <tr>
-	   <td>Nombre d'actions de formations proposées</td>
-	   <td>12</td>
-	  </tr>
-	</tbody></table>
-	</td>
-  </tr>
-  <tr>
-	<td style="width: 50%; background:">
-		<div id="chart_div" style="max-width: 900px; max-height: 500px;;"></div>
-	</td>
-	<td style="width: 50%; background:">
-		<div id="piechart" style="width: 900px; height: 500px; margin-left: 140px; margin-top: 50px; position:relative;	"></div>
-	</td>
-  </tr>
-</table>
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+		<div id="dual_y_div" style="max-with:50%"></div>
+	</div>
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">	
+		<table class="responstable">
+			<tbody>
+				<tr>  
+				<th >Statistique</th>  
+				<th width="70">Valeur</th>
+				</tr>
+				<tr>
+				<td>Nombre de formateurs inscrits</td>
+				<td>33</td>
+				</tr>
+				<tr>
+				<td>Nombre de formateurs validés</td>
+				<td>28</td>
+				</tr>
+				<tr>
+				<td>Prix moyen d'une journée de formation</td>
+				<td>210 €</td>
+				</tr>
+				<tr>
+				<td>Ratio d'actions de formations acceptées</td>
+				<td>91%</td>
+				</tr>
+				<tr>
+				<td>Nombre de participants à des actions groupées</td>
+				<td>8</td>
+				</tr>
+				<tr>
+				<td>Nombre d'actions de formations proposées</td>
+				<td>12</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+		<div id="chart_div" style="max-with:50%"></div>
+	</div>
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">	
+		<div id="piechart" style="max-with:50%"></div>
+	</div>
+</div>
+
 <br><br><br>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -100,8 +99,8 @@ include('include/main.php');
 
 	var options = {
 	  colors: ['rgb(48,85,122)', 'rgb(136,0,21)'],
-	  width: 700,
-	  height: 450,
+	  width: 500,
+	  height: 500,
 	  titleTextStyle: { bold: true, color: 'black' },
 	  chart: { title: 'Formations par mois'},
 	  backgroundColor: 'transparent'
@@ -132,8 +131,8 @@ include('include/main.php');
 		  titleTextStyle: { bold: true, color: 'black' },
           hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
           vAxis: {minValue: 0},
-		  width: 700,
-		  height: 550,
+		  width: 500,
+		  height: 500,
 		  areaOpacity: 0.8,
 		  backgroundColor: 'transparent'
         };
@@ -141,6 +140,6 @@ include('include/main.php');
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-    </script>
+</script>
 
 <?php include('include/footer.php'); ?>
