@@ -53,7 +53,7 @@
 
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">	
 					<label class="mdl-textfield__label" for="nom">Mot de passe</label>
-					<input class="mdl-textfield__input" type="text" name="password" id="nom" required="required" />
+					<input class="mdl-textfield__input" type="password" name="password" id="nom" required="required" />
 				</div>
 				<br/><br/>
 					
