@@ -6,7 +6,7 @@
 		<id>1</id>
 		<name>Here's an Event</name>
 		<startdate>2016-3-15</startdate>
-		<enddate>2016-3-17</enddate>
+		<enddate>2016-6-17</enddate>
 		<starttime>12:00</starttime>
 		<endtime>2:00</endtime>
 		<color>#ffb128</color>
@@ -16,7 +16,7 @@
 	<event>
 		<id>2</id>
 		<name>Another Event</name>
-		<startdate>2016-3-15</startdate>
+		<startdate>2016-6-15</startdate>
 		<enddate></enddate>
 		<starttime></starttime>
 		<endtime></endtime>
@@ -27,7 +27,7 @@
 	<event>
 		<id>3</id>
 		<name>Another Event</name>
-		<startdate>2016-3-29</startdate>
+		<startdate>2016-6-29</startdate>
 		<enddate></enddate>
 		<starttime>9:00</starttime>
 		<endtime>10:00</endtime>
@@ -38,7 +38,7 @@
 	<event>
 		<id>4</id>
 		<name>Another Event</name>
-		<startdate>2016-3-2</startdate>
+		<startdate>2016-6-2</startdate>
 		<enddate></enddate>
 		<starttime></starttime>
 		<endtime></endtime>
