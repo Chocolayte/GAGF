@@ -10,7 +10,6 @@
   $userData = $bdd->GetUtilisateurData($mail);
   $name = $userData['UTILISATEUR_PRENOM'].' '.$userData['UTILISATEUR_NOM'];
   $type = $userData['UTILISATEUR_UTILISATEURTYPE'];
- 
 ?>
 <body>
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
