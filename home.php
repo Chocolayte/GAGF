@@ -10,7 +10,6 @@
 ?>
 
 
-<main class="mdl-layout__content">
   <div class="mdl-grid demo-content">
       <h3>Planning</h3>
       
@@ -35,17 +34,10 @@
 
       ?>
   </div>
-</main>
 
 <script type="text/javascript" src="./js/jquery.js"></script>
 <script type="text/javascript" src="./js/monthly.js"></script>
 <script type="text/javascript">
-<<<<<<< Updated upstream
-	$(window).load( function() {
-		$('#mycalendar').monthly();
-	});
-</script>
-<script>
     $(window).load( function() {
         $('#mycalendar').monthly({
           mode: 'event',
@@ -53,8 +45,5 @@
         });
     });
 </script>
-
-
-
 
 <?php include('include/footer.php'); ?>
