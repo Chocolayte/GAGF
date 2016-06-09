@@ -13,7 +13,7 @@ include('include/main.php');
 <table style="width:100%">
   <tr>
 	<td style="width: 50%; background:;" >
-		<div id="piechart" style="width: 900px; height: 500px;"></div>
+		<div id="dual_y_div" style="max-width: 900px; max-height: 500px; margin-left: 50px; margin-top: 50px;"></div>
 	</td>
 	<td style="width: 50%; background:">
 		<table class="responstable" style="max-width:500px;"><tbody>
@@ -50,10 +50,10 @@ include('include/main.php');
   </tr>
   <tr>
 	<td style="width: 50%; background:">
-		<div id="dual_y_div" style="max-width: 900px; max-height: 500px;"></div>
+		<div id="chart_div" style="max-width: 900px; max-height: 500px;;"></div>
 	</td>
 	<td style="width: 50%; background:">
-		<div id="chart_div" style="max-width: 900px; max-height: 500px;;"></div>
+		<div id="piechart" style="width: 900px; height: 500px; margin-left: 140px; margin-top: 50px; position:relative;	"></div>
 	</td>
   </tr>
 </table>
