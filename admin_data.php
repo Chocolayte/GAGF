@@ -7,17 +7,18 @@
 	session_start();
 	$css = "style/messagerie.css";
 	function WriteLine($code, $libelle)
-		{
-			echo "  <tr>\n";
-			echo "   <tdclass=\"mdl-data-table__cell--non-numeric\">$code</td>\n";
-			echo "   <td>$libelle</td>\n";
-			echo "   <td>checkbox</td>\n";
-			echo "  </tr>\n";
-		}
-?>
+	{
+		echo "  <tr>\n";
+		echo "   <tdclass=\"mdl-data-table__cell--non-numeric\">$code</td>\n";
+		echo "   <td>$libelle</td>\n";
+		echo "   <td>checkbox</td>\n";
+		echo "  </tr>\n";
+	}
 
-<?php include('include/header.php'); ?>
-<?php include ('include/main.php'); ?>
+$header = "Gestion des données";
+include('include/header.php');
+include ('include/main.php'); 
+?>
 
 
  <div class="mdl-grid demo-content">

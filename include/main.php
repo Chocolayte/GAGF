@@ -16,7 +16,7 @@
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Accueil</span>
+          <span class="mdl-layout-title"><?php echo $header; ?></span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -75,7 +75,7 @@ switch($type)
 		break;
 	case 3:
 ?>
-		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
+		  <a class="mdl-navigation__link" href="statistiques.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
           <!--  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">euro_symbol</i>Devis & factures</a>-->
          
         

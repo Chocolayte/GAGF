@@ -1,12 +1,12 @@
 <!DOCTYPE html> 
 <?php
-  if (!isset($_COOKIE["log"]))
+if (!isset($_COOKIE["log"]))
 	header("Location: index.php");
 
-	$css = "style/monthly.css"; 
-	$header = "Accueil"; 
-	include('include/header.php'); 
-	include('include/main.php'); 
+$css = "style/monthly.css";
+$header = "Statistiques";
+include('include/header.php'); 
+include('include/main.php'); 
 ?>
 
 <div class="mdl-grid demo-content">

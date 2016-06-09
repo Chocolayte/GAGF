@@ -3,8 +3,11 @@
   if (isset($_COOKIE["log"]))
 	header("Location: home.php");
 ?>
-<?php include('include/header.php'); ?>
-<?php include('utils/cipher.php'); ?>
+<?php 
+$header = "Connexion";
+include('include/header.php');
+include('utils/cipher.php'); 
+?>
 
 
 <body>
