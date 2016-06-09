@@ -55,7 +55,7 @@
 <?php
 switch($type)
 {
-	case 1 :
+	case 1:
 ?>
        
 		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
@@ -66,16 +66,14 @@ switch($type)
          
 <?php
 		break;
-	case 2 :
+	case 2:
 ?>
-
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Mes clients</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">euro_symbol</i>Devis & factures</a>
          
-          
 <?php
 		break;
-	case 3 :
+	case 3:
 ?>
 		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
           <!--  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">euro_symbol</i>Devis & factures</a>-->
