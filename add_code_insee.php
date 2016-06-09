@@ -7,10 +7,9 @@
 	$libelle= $_POST['libelle'];
 	$result=$bdd->AddInsee($code, $libelle);
 	
-	session_start();
-	$_SESSION['insee']=$result;
-	 
-	header("Location: admin_data.php");
-
+	if ($result)
+	  echo "Classification de formation ajoutée avec succès";
+	else
+	  echo "Classification de formation déjà existente";
 	
 ?>

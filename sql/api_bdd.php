@@ -90,7 +90,7 @@ class BDD {
   // Ajouter une competence
   public function AddCompetence($competence, $bydefault)
   {
-	if(!$this->IsDataExists("competence", "COMPETENCE_LIBELLE", $competence))
+	if(!$this->IsDataExists("COMPETENCE", "COMPETENCE_LIBELLE", $competence))
 	{
 		$sql = "INSERT INTO COMPETENCE VALUES(NULL, '$competence', $bydefault)";
 		$this->SendRequest($sql);
@@ -99,14 +99,34 @@ class BDD {
 	return false;
   }
   
-  // obtention des classification
+  // Supp une competence
+  public function SuppCompetence($competence)
+  {
+	if($this->IsDataExists("COMPETENCE", "COMPETENCE_LIBELLE", $competence))
+	{
+		$sql = "DELETE FROM `COMPETENCE` WHERE COMPETENCE_LIBELLE='$competence'";
+		$this->SendRequest($sql);
+		return true;
+	}
+	return false;
+  }
+
+	// obtention des classification
 	public function GetClass()
 	{
-	  $sql = "SELECT * FROM classification";
+	  $sql = "SELECT * FROM CLASSIFICATION ORDER BY CLASSIFICATION_CODE_INSEE";
 	return $this->SendRequest($sql);
 	
 	}
 	
+	// obtention des compétence
+	public function GetComp()
+	{
+		$sql = "SELECT * FROM COMPETENCE";
+		return $this->SendRequest($sql);
+	
+	}
+
   // Ajouter une conversation privée
   public function AddConversation($subject, $mail_emetteur, $mail_destinataire)
   {
@@ -163,12 +183,25 @@ class BDD {
 	return $result;
   }
   
+
   // Ajouter un code INSEE
   public function AddInsee($code, $libelle) 
   {
 	if(!$this->IsDataExists("CLASSIFICATION", "CLASSIFICATION_CODE_INSEE", $code))
 	{
 		$sql = "INSERT INTO CLASSIFICATION VALUES(NULL, '$code', '$libelle')";
+		$this->SendRequest($sql);
+		return true;
+	}
+	return false;
+  }
+  
+  // Supp un code INSEE
+  public function SuppInsee($code) 
+  {
+	if($this->IsDataExists("CLASSIFICATION", "CLASSIFICATION_CODE_INSEE", $code))
+	{
+		$sql = "DELETE FROM `classification` WHERE CLASSIFICATION_CODE_INSEE='$code'";
 		$this->SendRequest($sql);
 		return true;
 	}
