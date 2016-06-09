@@ -6,6 +6,7 @@ if (!isset($_COOKIE["log"]))
 <?php 
 
 $css = "style/messagerie.css";
+$header = "Conversation";
 include('include/header.php'); 
 include ('include/main.php');
 

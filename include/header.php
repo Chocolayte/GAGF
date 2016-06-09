@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="./style/material.css">
     <link rel="stylesheet" href="./style/styles.css">
 	<?php if (isset($css)) echo "<link rel=\"stylesheet\" href=\"$css\">"; ?>
+	<?php if (isset($css2)) echo "<link rel=\"stylesheet\" href=\"$css2\">"; ?>
     <style>
     #view-source {
       position: fixed;
