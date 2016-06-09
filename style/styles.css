@@ -1,4 +1,4 @@
-/**
+/** 
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,9 +16,13 @@
 
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  background-color: #E9E9E9;
+}
+a{
+  color: #5E5E5E;
 }
 .demo-avatar {
-  width: 48px;
+  width: 80px;
   height: 48px;
   border-radius: 24px;
 }
@@ -74,10 +78,6 @@ html, body {
   color: rgba(255, 255, 255, 0.56);
   font-weight: 500;
 }
-.demo-layout .demo-navigation .mdl-navigation__link:hover {
-  background-color: #00BCD4;
-  color: #37474F;
-}
 .demo-navigation .mdl-navigation__link .material-icons {
   font-size: 24px;
   color: rgba(255, 255, 255, 0.56);
@@ -85,7 +85,7 @@ html, body {
 }
 
 .demo-content {
-  max-width: 1080px;
+  max-width: 700px;
 }
 
 .demo-charts {
@@ -177,4 +177,68 @@ _:-ms-input-placeholder, :root .demo-graph {
   display: flex;
   box-sizing: border-box;
   align-items: center;
+}
+
+.demo-drawer{
+  background-color: #263238;
+  color: #b5b5b7;
+}
+.mdl-layout__header-row{
+  background-color: #263238;
+  color: #b5b5b7;
+}
+.mdl-layout-spacer{
+  background-color: #263238;
+}
+.demo-layout .demo-navigation .mdl-navigation__link{
+  background-color: #263238;
+  color: #b5b5b7;
+}
+.demo-layout .demo-navigation .mdl-navigation__link:hover{
+  background-color: #263238;
+  color: #f2b632;
+}
+.demo-charts{
+  background-color: white;
+  width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+}
+#connexion{
+  width: 400px;
+  margin: auto;
+}
+#linkConnexion{
+  float: right;
+  font-size: 11px;
+}
+#inscription{
+  width: 400px;
+  margin: auto;
+}
+#linkInscription{
+  float: right;
+  font-size: 11px;
+}
+.mdl-layout__header{
+  background-color: #263238;
+  color: #f2b632;
+}
+.material-icons{
+  color: #b5b5b7;
+}
+.mdl-textfield--floating-label.is-invalid .mdl-textfield__label{
+  color: #5E5E5E;
+  font-size: 14px;
+}
+.mdl-textfield.is-invalid .mdl-textfield__label:after {
+  color: #5E5E5E;
+}
+.mdl-textfield.is-invalid .mdl-textfield__input{
+  border-color: #5E5E5E;
+}
+.mdl-button--raised.mdl-button--colored{
+  background-color: #263238;
 }

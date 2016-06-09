@@ -7,7 +7,7 @@
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
 
-      https://www.apache.org/licenses/LICENSE-2.0
+  https://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>GAGF</title>
+    <title>GAGF - <?php echo $header; ?></title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -46,9 +46,12 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <?php if (isset($css)) echo "<link rel=\"stylesheet\" href=\"$css\">"; ?>
+    <link rel="stylesheet" href="./style/material.css">
+    <link rel="stylesheet" href="./style/styles.css">
+	<?php if (isset($css)) echo "<link rel=\"stylesheet\" href=\"$css\">"; ?>
+	<?php if (isset($css2)) echo "<link rel=\"stylesheet\" href=\"$css2\">"; ?>
+	<?php if (isset($css3)) echo "<link rel=\"stylesheet\" href=\"$css3\">"; ?>
+
     <style>
     #view-source {
       position: fixed;

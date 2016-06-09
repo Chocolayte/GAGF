@@ -5,43 +5,53 @@ if (!isset($_COOKIE["log"]))
 
 <?php 
 $css = "style/messagerie.css";
+$header = "Messagerie";
 include('include/header.php'); 
 include ('include/main.php');
 
-function WriteLine($name, $title, $date, $read)
+function WriteLine($name, $id, $title, $date, $read)
 {
 	echo "  <tr>\n";
 	echo "   <td>$name</td>\n";
 	echo $read == true 
-			? "   <td><a href=\"#\" class=\"read\">$title</a></td>\n"
-			: "   <td><a href=\"#\" >$title</a></td>\n";;
+			? "   <td><a href=\"conversation.php?id=$id\" class=\"read\">$title</a></td>\n"
+			: "   <td><a href=\"conversation.php?id=$id\" >$title</a></td>\n";;
 	echo "   <td>$date</td>\n";
 	echo "  </tr>\n";
 }
 $mail_login = DecryptCookieMail($_COOKIE['log']);
 ?>
 
-<table class="responstable" >
   
-  <tbody><tr>
-    <th width="400">Destinataire</th>
-    <th>Sujet</th>
-    <th width="300">Date</th>
-  </tr>
   
-  <?php 
-  $personnalID = $bdd->GetUtilisateurData($mail_login)['UTILISATEUR_ID'];
-  $conversations = $bdd->GetConversations($mail_login);
-  print_r($conversations);
+<?php
+$personnalID = $bdd->GetUtilisateurData($mail_login)['UTILISATEUR_ID'];
+$conversations = $bdd->GetConversations($mail_login);
   
-  WriteLine("Pauline Kim", "Demande de fijrebg", "01/01/1978", true); 
-  WriteLine("Steffie Jayzy", "Question à propos du rehgbiuhb", "01/01/1978", false); 
-  WriteLine("Emma Watson", "Un autographe svp", "01/01/1978", false); ?>
+if (sizeof($conversations) > 0) 
+{
+	echo '<table class="responstable" >';
+	echo '<tbody><tr>';
+	echo '  <th width="200">Destinataire</th>';
+	echo '  <th>Sujet</th>';
+	echo '  <th width="200">Date</th>';
+	echo '</tr>';
+
+	foreach ($conversations as &$value)
+	{
+	  $account = $personnalID == $value['CONVERSATION_UTILISATEUR1'] ? $value['CONVERSATION_UTILISATEUR2'] : $value['CONVERSATION_UTILISATEUR1'];
+	  $userData = $bdd->GetUtilisateurDataById($account);
+	  $userName = $userData['UTILISATEUR_PRENOM'].' '.$userData['UTILISATEUR_NOM'];
+	  WriteLine($userName, $value['CONVERSATION_ID'], $value['CONVERSATION_TITRE'], $value['CONVERSATION_DATE'], $value['CONVERSATION_UTILISATEUR1_LU']); 
+	}
+	
+	echo '</tbody></table>';
+}
+?>
   
-</tbody></table>
 
 
-<div style="margin-top:100px">
+		<div style="margin-top:50px">
 			<div class="container">
 				<div class="panel panel-default" style="margin:0 auto">
 					<div class="panel-heading">
@@ -78,5 +88,8 @@ $mail_login = DecryptCookieMail($_COOKIE['log']);
 				</div>
 			</div>
 		</div>
+		
+		<br>
+		<br>
 
 <?php include('include/footer.php'); ?>

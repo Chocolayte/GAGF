@@ -28,7 +28,8 @@
 
 	$bdd = new BDD();
 	$userExists = $bdd->AddUtilisateur($mail, $pass1, $nom, $prenom, $type, $adresse, $codePostal, $ville, $tel, 0);
-	print_r($userExists);
+
+	header('Location: ../');
 	
 ?>
     

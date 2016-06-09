@@ -8,7 +8,7 @@ class BDD {
   {
     $dbhost = 'localhost';
     $dbuser = 'root';
-    $dbpassword = 'root';
+    $dbpassword = $_SERVER['SERVER_NAME'] == 'gagf.mypix.ovh' ? 'Sq$pcA9e!!' : 'root';
     $dbname = 'gagf' ;
   
 	try {
@@ -60,37 +60,31 @@ class BDD {
   // Fonction pour obtenir l'accès d'un utilisateur
   public function IsUserExists($mail, $password)
   {
-    $sql = "SELECT COUNT(*) AS exist FROM utilisateur WHERE UTILISATEUR_MAIL='$mail' AND UTILISATEUR_MOT_DE_PASSE='$password'";
+    $sql = "SELECT COUNT(*) AS EXIST FROM UTILISATEUR WHERE UTILISATEUR_MAIL='$mail' AND UTILISATEUR_MOT_DE_PASSE='$password'";
     $result = $this->SendRequest($sql);
-	return $result[0]["exist"] > 0;
+	return $result[0]["EXIST"] > 0;
   }
   
   // Fonction pour obtenir le type d'un utilisateur
-  public function GetUtilisateurType($mail)
+  public function GetUtilisateurData($mail)
   {
-	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail))
+	if($this->IsDataExists("UTILISATEUR", "UTILISATEUR_MAIL", $mail))
 	{
-		$sql = "SELECT UTILISATEUR_UTILISATEURTYPE FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
-		$result= $this->SendRequest($sql);
-		return $result [0]["UTILISATEUR_UTILISATEURTYPE"];
+		$sql = "SELECT * FROM UTILISATEUR WHERE UTILISATEUR_MAIL='$mail'";
+		return $this->SendRequest($sql)[0];
 	}
-	//return -1;
+	return null;
   }
   
-  // Fonction pour obtenir le nom et prénom de l'utilisateur
-  public function GetNameUtilisateur($mail) 
+  // Fonction pour obtenir le type d'un utilisateur
+  public function GetUtilisateurDataById($id)
   {
-	if($this->IsDataExists("utilisateur", "UTILISATEUR_MAIL", $mail)) 
+	if($this->IsDataExists("UTILISATEUR", "UTILISATEUR_ID", $id))
 	{
-		$sql = "SELECT UTILISATEUR_NOM, UTILISATEUR_PRENOM FROM utilisateur WHERE UTILISATEUR_MAIL='$mail'";
-		$result = $this->SendRequest($sql);		
-		$array = array(
-			"nom" => strtoupper($result[0]["UTILISATEUR_NOM"]), 
-			"prenom" => $result[0]["UTILISATEUR_PRENOM"]
-		);
-		$string = implode(" ", $array);		
-		return $string;
+		$sql = "SELECT * FROM UTILISATEUR WHERE UTILISATEUR_ID='$id'";
+		return $this->SendRequest($sql)[0];
 	}
+	return null;
   }
   
   // Ajouter une competence
@@ -113,10 +107,66 @@ class BDD {
 	
 	}
 	
+  // Ajouter une conversation privée
+  public function AddConversation($subject, $mail_emetteur, $mail_destinataire)
+  {
+	$sql = "INSERT INTO CONVERSATION VALUES(
+			  NULL
+			, '$subject'
+			, (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')
+			, (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_destinataire')
+			, CURRENT_TIMESTAMP()
+			, 1
+			, 0)";
+	$this->SendRequest($sql);
+	return $this->bdd->lastInsertId();
+  }
+  
+  // Retourne une conversation privée
+  public function GetConversations($mail_emetteur)
+  {
+	$sql = "SELECT 
+				  C.CONVERSATION_ID
+				, C.CONVERSATION_TITRE
+				, C.CONVERSATION_DATE
+				, C.CONVERSATION_UTILISATEUR1
+				, C.CONVERSATION_UTILISATEUR1_LU
+				, C.CONVERSATION_UTILISATEUR2
+				, C.CONVERSATION_UTILISATEUR2_LU
+			FROM 
+				CONVERSATION AS C
+			WHERE 
+				   CONVERSATION_UTILISATEUR1 = (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')
+				OR CONVERSATION_UTILISATEUR2 = (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')";
+	$result = $this->SendRequest($sql);
+	return $result;
+  }
+  
+  // Ajouter un message dans une conversation privée
+  public function AddMessage($conversationID, $mail_emetteur, $message)
+  {
+	$sql = "INSERT INTO MESSAGE VALUES(
+			  NULL
+			, '$conversationID'
+			, (SELECT UTILISATEUR_ID FROM UTILISATEUR WHERE UTILISATEUR_MAIL = '$mail_emetteur')
+			, '$message'
+			, CURRENT_TIMESTAMP())";
+	$this->SendRequest($sql);
+	return true;
+  }
+  
+  // Retourne les messages d'une conversation
+  public function GetMessages($id)
+  {
+	$sql = "SELECT * FROM MESSAGE WHERE MESSAGE_CONVERSATION = '$id'";
+	$result = $this->SendRequest($sql);
+	return $result;
+  }
+  
   // Ajouter un code INSEE
   public function AddInsee($code, $libelle) 
   {
-	if(!$this->IsDataExists("classification", "CLASSIFICATION_CODE_INSEE", $code))
+	if(!$this->IsDataExists("CLASSIFICATION", "CLASSIFICATION_CODE_INSEE", $code))
 	{
 		$sql = "INSERT INTO CLASSIFICATION VALUES(NULL, '$code', '$libelle')";
 		$this->SendRequest($sql);
