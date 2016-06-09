@@ -35,7 +35,7 @@ a{
   bottom: 19px;
 }
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: rgba(0, 0, 0, 0.54);
+  background: rgb(38, 50, 56);
 }
 .mdl-layout__drawer .avatar {
   margin-bottom: 16px;
