@@ -47,7 +47,7 @@
 				ShowMessage(xhr.responseText);
 				
 				if (xhr.responseText == "Classification de formation ajoutée avec succès")
-					{ window.location.replace("admin_data.php");  }
+					{ setTimeout("window.location.replace(\"admin_data.php\")", 3000); }
 			}
 		}
 		xhr.send("libelle=" + libelle + "&code=" + code);
@@ -66,6 +66,8 @@
 			if (xhr.readyState == 4)
 			{
 				ShowMessage(xhr.responseText);
+				if (xhr.responseText == "Compétence ajoutée avec succès")
+					{ setTimeout("window.location.replace(\"admin_data.php\")", 3000);  }
 			}
 		}
 		xhr.send("competence=" + competence );
@@ -85,7 +87,7 @@
 			{
 				ShowMessage(xhr.responseText);
 				if (xhr.responseText == "Compétence supprimée avec succès")
-					{ window.location.replace("admin_data.php");  }
+					{ setTimeout("window.location.replace(\"admin_data.php\")", 3000);  }
 				
 			}
 		}
@@ -107,7 +109,7 @@
 				ShowMessage(xhr.responseText);
 				
 				if (xhr.responseText == "Classification de formation supprimée avec succès")
-					{ window.location.replace("admin_data.php");  }
+					{ setTimeout("window.location.replace(\"admin_data.php\")", 3000); }
 			}
 		}
 		
@@ -134,7 +136,7 @@
 				<button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--icon" type="submit" onClick="onClickAddc()">
 							<i class="material-icons">add</i>
 						</button>
-						
+						<div class="mdl-layout-spacer"></div>
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">	
 				<label class="mdl-textfield__label" for="Competence2">Nom de la compétence</label>
 				    <select class="mdl-textfield__input" id="competence2" name="competence2">
