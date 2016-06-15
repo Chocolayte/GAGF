@@ -119,7 +119,7 @@ class BDD {
 	
 	}
 	
-	// obtention des compétence
+	// obtention des compétences
 	public function GetComp()
 	{
 		$sql = "SELECT * FROM COMPETENCE";
@@ -206,6 +206,26 @@ class BDD {
 		return true;
 	}
 	return false;
+  }
+  
+  //Inversion d'une valeur booléen
+  public function InverseBool($table,$coloneTest,$valueTest,$bool)
+  {
+	  if($this->IsDataExists($table, $coloneTest, $valueTest))
+	{
+		$sql = "UPDATE $table SET $bool = NOT($bool) where $coloneTest = '$valueTest'";
+		$this->SendRequest($sql);
+		$sql ="SELECT $bool FROM $table where $coloneTest = '$valueTest'";
+		return $this->SendRequest($sql);
+    }
+	return (-1);
+  }
+ //count une variable 
+   public function CountSql($table, $colonne, $value)
+  {
+	$sql = "SELECT COUNT($colonne) AS total FROM $table WHERE $colonne = '$value'";
+	$row = $this->SendRequest($sql);
+	return $row[0]["total"];
   }
 }
 

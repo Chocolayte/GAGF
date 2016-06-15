@@ -1,3 +1,4 @@
+
 <?php
 
 	include('sql/api_bdd.php');
@@ -10,7 +11,7 @@
 	}
 	
 	if ($result)
-	  echo "Classification de formation supprimée avec succès";
+	  echo "Classification supprimée avec succès";
 	else
 	  echo "Classification de formation inexistente";
 ?>

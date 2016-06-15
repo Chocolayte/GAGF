@@ -10,6 +10,8 @@
   $userData = $bdd->GetUtilisateurData($mail);
   $name = $userData['UTILISATEUR_PRENOM'].' '.$userData['UTILISATEUR_NOM'];
   $type = $userData['UTILISATEUR_UTILISATEURTYPE'];
+  
+  $nonActif=$bdd->CountSql("UTILISATEUR","UTILISATEUR_ACTIVE",0);
 ?>
 <body>
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -50,7 +52,7 @@
 		 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
           <a class="mdl-navigation__link" href="home.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Accueil</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_circle</i>Mon espace</a>
-          <a class="mdl-navigation__link" href="messagerie.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Messages privés</a>
+          <a class="mdl-navigation__link" href="messagerie.php"><i class="mdl-color-text--blue-grey-400 material-icons mdl-badge mdl-badge--overlap" data-badge="1" role="presentation">forum</i>Messages privés</a>
 <?php
 switch($type)
 {
@@ -58,7 +60,8 @@ switch($type)
 ?>
        
 		  <a class="mdl-navigation__link" href="statistiques_admin.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">show_chart</i>Statistiques</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Gestion des comptes</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons <?php if($nonActif>0) echo "mdl-badge mdl-badge--overlap\" data-badge=\"$nonActif\"";?>""role="presentation">people</i>Gestion des comptes</a>
+		  
 		  <a class="mdl-navigation__link" href="admin_data.php"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">school</i>Gestion des Formations</a>
         <!--  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">euro_symbol</i>Devis & factures</a>-->
          

@@ -107,9 +107,7 @@
 			if (xhr.readyState == 4)
 			{
 				ShowMessage(xhr.responseText);
-				
-				if (xhr.responseText == "Classification de formation supprimée avec succès")
-					{ setTimeout("window.location.replace(\"admin_data.php\")", 3000); }
+				setTimeout("window.location.replace(\"admin_data.php\")", 3000);
 			}
 		}
 		
