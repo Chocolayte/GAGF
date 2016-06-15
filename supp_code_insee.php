@@ -13,5 +13,5 @@
 	if ($result)
 	  echo "Classification supprimée avec succès";
 	else
-	  echo "Classification de formation inexistente";
+	  echo "Classification de formation inexistante";
 ?>

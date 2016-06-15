@@ -9,7 +9,7 @@
 	if ($result)
 	  echo "Compétence supprimée avec succès";
 	else
-	  echo "Compétence inexistente";
+	  echo "Compétence inexistante";
 
 	
 ?>

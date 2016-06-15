@@ -10,6 +10,6 @@
 	if ($result)
 	  echo "Classification de formation ajoutée avec succès";
 	else
-	  echo "Classification de formation déjà existente";
+	  echo "Classification de formation déjà existante";
 	
 ?>

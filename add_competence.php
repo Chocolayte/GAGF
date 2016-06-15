@@ -10,7 +10,7 @@
 	if ($result)
 	  echo "Compétence ajoutée avec succès";
 	else
-	  echo "Compétence déjà existente";
+	  echo "Compétence déjà existante";
 
 	
 ?>
