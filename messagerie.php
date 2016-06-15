@@ -5,6 +5,7 @@ if (!isset($_COOKIE["log"]))
 
 <?php 
 $css = "style/messagerie.css";
+$css2 = "style/statistiques.css";
 $header = "Messagerie";
 include('include/header.php'); 
 include ('include/main.php');
@@ -30,7 +31,7 @@ $conversations = $bdd->GetConversations($mail_login);
   
 if (sizeof($conversations) > 0) 
 {
-	echo '<table class="responstable" >';
+	echo '<table class="responstable">';	
 	echo '<tbody><tr>';
 	echo '  <th width="200">Destinataire</th>';
 	echo '  <th>Sujet</th>';

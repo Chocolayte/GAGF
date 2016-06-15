@@ -7,16 +7,17 @@
 	include('include/header.php'); 
 	include('include/main.php'); 
 
+	$bdd = new BDD();
 
-  $userData = $bdd->GetUtilisateurData($mail);
-  $type = $userData['UTILISATEUR_UTILISATEURTYPE'];
-  
-  if ($type == 1)
-	include('home_administrateur.php');
-  else if ($type == 2)
-	include('home_formateur.php');
-  else if ($type == 3)
-	include('home_comptable.php');
+	$userData = $bdd->GetUtilisateurData($mail);
+	$type = $userData['UTILISATEUR_UTILISATEURTYPE'];
+
+	if ($type == 1)
+		include('home_formateur.php');
+	else if ($type == 2)
+		include('home_formateur.php');
+	else if ($type == 3)
+		include('home_comptable.php');
 	
 ?>
 
