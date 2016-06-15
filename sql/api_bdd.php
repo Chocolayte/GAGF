@@ -104,7 +104,7 @@ class BDD {
   {
 	if($this->IsDataExists("COMPETENCE", "COMPETENCE_LIBELLE", $competence))
 	{
-		$sql = "DELETE FROM `COMPETENCE` WHERE COMPETENCE_LIBELLE='$competence'";
+		$sql = "DELETE FROM COMPETENCE WHERE COMPETENCE_LIBELLE='$competence'";
 		$this->SendRequest($sql);
 		return true;
 	}
@@ -201,7 +201,7 @@ class BDD {
   {
 	if($this->IsDataExists("CLASSIFICATION", "CLASSIFICATION_CODE_INSEE", $code))
 	{
-		$sql = "DELETE FROM `classification` WHERE CLASSIFICATION_CODE_INSEE='$code'";
+		$sql = "DELETE FROM CLASSIFICATION WHERE CLASSIFICATION_CODE_INSEE='$code'";
 		$this->SendRequest($sql);
 		return true;
 	}
